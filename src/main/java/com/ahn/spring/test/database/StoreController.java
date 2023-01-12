@@ -7,14 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ahn.spring.test.database.bo.StoreBo;
+import com.ahn.spring.test.database.bo.StoreBO;
 import com.ahn.spring.test.database.model.Store;
 
 @Controller
 public class StoreController {
 	
 	@Autowired
-	public StoreBo storeBo;
+	public StoreBO storeBo;
 	
 	@ResponseBody
 	@RequestMapping("/database/test01")

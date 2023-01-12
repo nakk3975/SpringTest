@@ -9,7 +9,7 @@ import com.ahn.spring.test.database.dao.StoreDAO;
 import com.ahn.spring.test.database.model.Store;
 
 @Service
-public class StoreBo {
+public class StoreBO {
 	
 	@Autowired
 	public StoreDAO storeDao;
