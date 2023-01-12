@@ -14,10 +14,10 @@ import com.ahn.spring.test.lifecycle.model.Board;
 
 
 @RestController
-@RequestMapping("/lifecycle/test01")
+@RequestMapping("/lifecycle/test02")
 public class Test02RestController {
 	
-	@RequestMapping("/3")
+	@RequestMapping("/1")
 	public List<Map<String, Object>> objectResponse() {
 		List<Map<String, Object>> movieList = new ArrayList<>();
 		Map<String, Object> movie = new HashMap<String, Object>();
@@ -59,10 +59,10 @@ public class Test02RestController {
 		return movieList;
 	}
 	
-	@RequestMapping("/4")
-	public List<Object> jsonBoard() {
+	@RequestMapping("/2")
+	public List<Board> jsonBoard() {
 		
-		List<Object> boardList = new ArrayList<>();
+		List<Board> boardList = new ArrayList<>();
 		
 		Board board = new Board();
 		board.setTitle("안녕하세요 가입인사 드립니다.");
@@ -85,7 +85,7 @@ public class Test02RestController {
 		return boardList;
 	}
 	
-	@RequestMapping("/5")
+	@RequestMapping("/3")
 	public ResponseEntity<Board> entityResponse() {
 		Board board = new Board();
 		board.setTitle("안녕하세요 가입인사 드립니다.");
