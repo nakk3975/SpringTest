@@ -2,6 +2,7 @@ package com.ahn.spring.test.mybatis.bo;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,29 @@ public class EstateBO {
 	public List<Estate> getAreaPrice(int area, int price) {
 		List<Estate> areaList = estateDao.selectAreaPrice(area, price);
 		return areaList;
+	}
+
+	
+	public int addEstate(Estate estate) {
+		return estateDao.addEstate(estate);
+	}
+	
+	public int addEstateByObject(
+			int realtorId
+			, String address
+			, int area
+			, String type
+			, int price
+			, int rentPrice) {
+		return estateDao.addEstateByObject(realtorId, address, area, type, price, rentPrice);
+	}
+	
+	// 변경할 대상 id, 변경할 type, 변경할 price
+	public int updateEstate(int id, String type, int price) {
+		return estateDao.updateEstate(id, type, price);
+	}
+	
+	public int deleteEstate(int id) {
+		return estateDao.deleteEstate(id);
 	}
 }
