@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ahn.spring.test.ajax.dao.FavoriteDAO">
+	<select id="favoriteList" resultType="com.ahn.spring.test.ajax.model.Favorite">
+		SELECT
+			`id`
+			, `name`
+			, `url`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`favorites`
+	</select>
+	
+	<insert id="favoriteAdd" parameterType="map">
+		INSERT INTO
+			`favorites`
+		(
+			`name`
+			, `url`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			#{name}
+			, #{url}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<select id="checkUrl" parameterType="String" resultType="int">
+		SELECT
+			count(url)
+		FROM
+			`favorites`
+		WHERE
+			`url` = #{url}
+	</select>
+	
+	<delete id="favoriteDelete" parameterType="int">
+		DELETE
+			`favorites`
+		WHERE
+			`id` = #{id}
+	</delete>
+</mapper>
