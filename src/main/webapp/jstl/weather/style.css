@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.main {
+	background-color: cornflowerblue
+}
+
+nav > ul > li > a {
+	color: white;
+}
+
+nav > ul > li > a:hover {
+	color: gray;
+}

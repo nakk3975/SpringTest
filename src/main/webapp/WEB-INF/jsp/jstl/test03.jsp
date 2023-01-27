@@ -16,7 +16,7 @@
 <body>
 	<div class="container">
 		<div>
-			<h1>1. 후보자 득표율</h1>
+			<h2>1. 후보자 득표율</h2>
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -37,7 +37,7 @@
 			</table>
 		</div>
 		<div>
-			<h1>2. 카드 명세서</h1>
+			<h2>2. 카드 명세서</h2>
 			<table class="table text-center">
 				<thead>
 					<tr>
