@@ -27,15 +27,15 @@
 					<th></th>
 				</tr>
 			</thead>
+			<tbody>
 				<c:forEach var="favorite" items="${favorites}" varStatus="status">
 					<tr>
 						<td>${status.count}</td>
 						<td>${favorite.name}</td>
 						<td>${favorite.url}</td>
-						<td><button type="button" class="btn btn-danger" id="deleteBtn">삭제</button></td>
+						<td><button type="button" class="btn btn-danger" value="${favorite.id}">삭제</button></td>
 					</tr>
 				</c:forEach>
-			<tbody>
 			</tbody>
 		</table>
 	</div>
@@ -43,8 +43,8 @@
 	
 	<script>
 		$(document).ready(function() {
-			/*
-			$("#deleteBtn").on("click", function() {
+			$(".btn").on("click", function() {
+				let id = $(this).val();
 				$.ajax({
 					type: "post"
 					, url: "/ajax/favorite/deleteUrl"
@@ -61,7 +61,6 @@
 					}
 				});
 			});
-			*/
 		});
 	</script>
 </body>

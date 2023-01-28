@@ -32,10 +32,8 @@
 	
 	<script>
 		$(document).ready(function() {
-			
 			$("#checkBtn").on("click", function() {
 				let url = $("#urlInput").val();
-				
 				$.ajax({
 					type: "post"
 					, url: "/ajax/favorite/urlCheck"
@@ -68,8 +66,8 @@
 					alert("주소를 입력해 주세요.");
 					return;
 				}
-				
-				if(url != regex){
+			
+				if(!regex.test(url)){
 					alert("주소가 올바르지 않습니다.");
 					return;
 				}
