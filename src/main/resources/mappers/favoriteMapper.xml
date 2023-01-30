@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="checkUrl" parameterType="String" resultType="int">
 		SELECT
-			count(url)
+			count(1)
 		FROM
 			`favorites`
 		WHERE

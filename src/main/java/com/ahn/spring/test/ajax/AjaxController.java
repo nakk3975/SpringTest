@@ -53,23 +53,27 @@ public class AjaxController {
 		} else {
 			result.put("result", "fail");
 		}
-		
 		return result;
 	}
 	
 	@PostMapping("/urlCheck")
 	@ResponseBody
-	public int checkUrl(@RequestParam("url") String url) {
+	public Map<String, Boolean> checkUrl(@RequestParam("url") String url) {
+		Map<String, Boolean> result = new HashMap<>(); 
 		
-		int count = favoriteBO.checkUrl(url);
-		return count;
+		result.put("urlCheck", favoriteBO.checkUrl(url));
+
+		return result;
 	}
 
 	@PostMapping("/deleteUrl")
 	@ResponseBody
-	public int favoriteDelete(
+	public Map<String, Boolean> favoriteDelete(
 			@RequestParam("id") int id) {
-		int count = favoriteBO.favoriteDelete(id);
-		return count;
+		Map<String, Boolean> result = new HashMap<>();
+
+		result.put("deleteUrl", favoriteBO.favoriteDelete(id));
+
+		return result;
 	}
 }

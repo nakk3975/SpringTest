@@ -17,21 +17,31 @@
 		<h1>즐겨 찾기 추가하기</h1>
 		
 		<label>제목</label>
-		<input type="text" name="name" id="nameInput" class="form-control"><br>
+		<input type="text" name="name" id="nameInput" class="form-control">
 		
-		<label>주소</label>
+		<label class="mt-3">주소</label>
 		<div class="d-flex justify-content-between">
-			<input type="text" name="url" id="urlInput" class="form-control col-11">
+			<input type="text" name="url" id="urlInput" class="form-control">
 			<button type="button" id="checkBtn" class="btn btn-info">중복확인</button>
 		</div>
-		<span id="urlOver" style="display:none;" class="text-danger">중복된 url 입니다</span>
+		<span id="urlOver" style="display:none;" class="text-danger small">중복된 url 입니다</span>
+		<span id="urlOk" style="display:none;" class="text-primary small">저장 가능한 url 입니다</span>
 		<br>
 		
-		<button type="button" id="insertBtn" class="btn btn-block btn-success">추가</button>
+		<button type="button" id="insertBtn" class="btn btn-block btn-success mt-3">추가</button>
 	</div>
 	
 	<script>
 		$(document).ready(function() {
+			
+			var isChecked = false;
+			var urlChecked = false;
+			
+			$("#urlInput").on("change", function() {
+				isChecked = false;
+				urlChecked = false;
+			});
+			
 			$("#checkBtn").on("click", function() {
 				let url = $("#urlInput").val();
 				$.ajax({
@@ -39,10 +49,16 @@
 					, url: "/ajax/favorite/urlCheck"
 					, data:{"url":url}
 					, success:function(data) {
-						if(data >= 1){
+						
+						isChecked = true;
+						
+						if(data.urlCheck){
 							$("#urlOver").show();
+							$("#urlOk").hide();
+							urlChecked = true;
 						} else {
 							$("#urlOver").hide();
+							$("#urlOk").show();
 						}
 					}
 					, error:function() {
@@ -72,6 +88,18 @@
 					return;
 				}
 				
+				if(!isChecked) {
+					alert("중복확인을 해주세요");
+					return;
+				}
+				
+				if(urlChecked) {
+					alert("중복된 url 입니다.");
+					urlChecked = false;
+					isChecked = false;
+					return;
+				}
+					
 				$.ajax({
 					type: "post"
 					, url: "/ajax/favorite/add"

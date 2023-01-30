@@ -25,12 +25,22 @@ public class FavoriteBO {
 		return favoriteDAO.favoriteAdd(name, url);
 	}
 	
-	public int checkUrl(String url) {
-		return favoriteDAO.checkUrl(url);
+	public boolean checkUrl(String url) {
+		int count = favoriteDAO.checkUrl(url);
+		if(count == 0) {
+			return false; 
+		} else {
+			return true;
+		}
 	}
 
-	public int favoriteDelete(int id) {
-		return favoriteDAO.favoriteDelete(id);
+	public boolean favoriteDelete(int id) {
+		int count = favoriteDAO.favoriteDelete(id);
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 }
