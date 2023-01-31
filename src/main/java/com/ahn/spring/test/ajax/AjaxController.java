@@ -44,7 +44,6 @@ public class AjaxController {
 			@RequestParam("name") String name
 			, @RequestParam("url") String url
 			) {
-		
 		int count = favoriteBO.favoriteAdd(name, url);
 		
 		Map<String, String> result = new HashMap<>();
@@ -66,6 +65,9 @@ public class AjaxController {
 		return result;
 	}
 
+	
+	// 삭제 API
+	// id를 전달 받고, 해당 행을 삭제하는 API
 	@PostMapping("/deleteUrl")
 	@ResponseBody
 	public Map<String, Boolean> favoriteDelete(

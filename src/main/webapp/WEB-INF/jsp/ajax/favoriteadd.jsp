@@ -40,6 +40,8 @@
 			$("#urlInput").on("change", function() {
 				isChecked = false;
 				urlChecked = false;
+				$("#urlOk").hide();
+				$("#urlOver").hide();
 			});
 			
 			$("#checkBtn").on("click", function() {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ahn.spring.test.ajax.dao.FavoriteDAO;
+import com.ahn.spring.test.ajax.model.Booking;
 import com.ahn.spring.test.ajax.model.Favorite;
 
 @Service
@@ -42,5 +43,7 @@ public class FavoriteBO {
 			return true;
 		}
 	}
+	
+	
 	
 }

@@ -33,7 +33,7 @@
 						<td>${status.count}</td>
 						<td>${favorite.name}</td>
 						<td>${favorite.url}</td>
-						<td><button type="button" class="btn btn-danger deleteBtn" data-id="${favorite.id}">삭제</button></td>
+						<td><button type="button" class="btn btn-danger delete-btn" data-id="${favorite.id}">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -44,8 +44,12 @@
 	<script>
 		$(document).ready(function() {
 			
-			$(".deleteBtn").on("click", function() {
+			$(".delete-btn").on("click", function() {
+				
+				// 삭제 API
+				// 삭제 대상이 되는 행의 버튼 태그 객체
 				let id = $(this).data("id");
+				
 				$.ajax({
 					type: "post"
 					, url: "/ajax/favorite/deleteUrl"
