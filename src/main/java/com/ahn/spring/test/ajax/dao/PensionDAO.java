@@ -15,4 +15,8 @@ public interface PensionDAO {
 	public int deleteList(@Param("id") int id);
 	
 	public int insertReserve(Booking booking);
+
+	public Booking selectBooking(
+			@Param("name") String name
+			, @Param("phoneNumber") String phoneNumber);
 }

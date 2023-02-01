@@ -60,7 +60,6 @@
 	</div>
 	
 	<script>
-		var sort = true;
 	
 		function sortTable(n) {
 			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

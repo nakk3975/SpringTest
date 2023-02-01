@@ -37,28 +37,12 @@
                         </div>
                         <div class="member-input mt-3" id="member">
                             <div class="input-gorup form-inline">
-                                <label class="input-label">아이디 :</label>
-                                <input type="text" class="form-control text-input" id="id">
-                            </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">비밀번호 :</label>
-                                <input type="password" class="form-control text-input" id="password">
-                            </div>
-
-                        </div>
-
-                        <div class="no-member-input mt-3 d-none" id="nonMember">
-                            <div class="input-gorup form-inline">
-                                <label class="input-label">이름 </label>
+                                <label class="input-label">이름 :</label>
                                 <input type="text" class="form-control text-input" id="name">
                             </div>
                             <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">전화번호 </label>
+                                <label class="input-label">전화번호 :</label>
                                 <input type="text" class="form-control text-input" id="phoneNumber">
-                            </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">날짜 </label>
-                                <input type="text" class="form-control text-input" id="date">
                             </div>
 
                         </div>
@@ -82,10 +66,36 @@
         </div>
 
     <script>
+    	
         $(document).ready(function() {
+        	
+        	$("#lookupBtn").on("click", function() {
+        		let name = $("#name").val();
+        		let phoneNumber = $("#phoneNumber").val();
+
+        		$.ajax({
+        			type:"post"
+        			, url:"/pension/select"
+        			, data:{"name":name, "phoneNumber":phoneNumber}
+        			, success:function(data) {
+        				if(data.name == name && data.phoneNumber == phoneNumber){
+        					alert("이름 : " + data.name 
+        							+ "\n날짜 : " + data.date
+        							+ "\n일수 : " + data.day
+        							+ "\n인원 : " + data.headcount
+        							+ "\n상태 : " + data.state);	
+        				} else {
+        					alert("조회 결과가 없습니다.");	
+        				}
+        			}
+        			, error:function() {
+        				alert("에러");
+        			}
+        		});
+        	});
 
             // 데이트 피커 셋팅
-            $( "#date" ).datepicker({
+            $("#date").datepicker({
                 minDate:0, 
                 dateFormat: "yy년 m월 d일",
             });

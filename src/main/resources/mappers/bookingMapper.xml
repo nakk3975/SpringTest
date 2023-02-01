@@ -52,4 +52,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, now()
 		)
 	</insert>
+	
+	<select id="selectBooking" resultType="com.ahn.spring.test.ajax.model.Booking"
+	parameterType="String">
+		SELECT
+			`id`
+			, `name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`booking`
+		WHERE
+			`name` = #{name} AND `phoneNumber` = #{phoneNumber}
+	</select>
 </mapper>

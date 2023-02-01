@@ -36,4 +36,9 @@ public class PensionBO {
 			return true;
 		}
 	}
+	
+	public Booking selectBooking(String name, String phoneNumber) {
+		return pensionDAO.selectBooking(name, phoneNumber);
+
+	}
 }

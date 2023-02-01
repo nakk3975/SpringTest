@@ -29,7 +29,7 @@ public class PensionController {
 		return "/ajax/pension/pension";
 	}
 
-	@GetMapping("list")
+	@GetMapping("/list")
 	public String listPage(Model model) {
 
 		List<Booking> bookingList = pensionBO.bookingList();
@@ -39,7 +39,7 @@ public class PensionController {
 		return "ajax/pension/pensionReservation";
 	}
 
-	@GetMapping("booking")
+	@GetMapping("/booking")
 	public String bookingPage() {
 		return "ajax/pension/pensionBooking";
 	}
@@ -59,12 +59,22 @@ public class PensionController {
 	@ResponseBody
 	public Map<String, Boolean> insertReserve(@ModelAttribute Booking booking) {
 		System.out.println("확인 " + booking.toString());
-		
+
 		Map<String, Boolean> result = new HashMap<>();
-		
+
 		result.put("result", pensionBO.insertReserve(booking));
-		
+
 		return result;
+	}
+
+	@PostMapping("/select")
+	@ResponseBody
+	public Booking selectBookint(
+			@RequestParam("name") String name
+			, @RequestParam("phoneNumber") String phoneNumber
+			) {
+
+		return pensionBO.selectBooking(name, phoneNumber);
 	}
 
 }
