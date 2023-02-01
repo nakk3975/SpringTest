@@ -38,7 +38,7 @@ public class PensionBO {
 	}
 	
 	public Booking selectBooking(String name, String phoneNumber) {
-		return pensionDAO.selectBooking(name, phoneNumber);
+		 return pensionDAO.selectBooking(name, phoneNumber);
 
 	}
 }
