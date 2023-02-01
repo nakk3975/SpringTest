@@ -69,22 +69,12 @@ public class PensionController {
 
 	@PostMapping("/select")
 	@ResponseBody
-	public Map<String, Object> selectBookint(
+	public Booking selectBookint(
 			@RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber
 			) {
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		if(pensionBO.selectBooking(name, phoneNumber) == null) {
-			result.put("result", false);
-		} else {
-			result.put("result", true);
-		}
-		result.put("pension", pensionBO.selectBooking(name, phoneNumber));
-		
-		return result;
-		
+
+		return pensionBO.selectBooking(name, phoneNumber);
 	}
 
 }

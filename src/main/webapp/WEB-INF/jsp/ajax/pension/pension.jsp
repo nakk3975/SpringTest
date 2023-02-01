@@ -78,20 +78,14 @@
         			, url:"/pension/select"
         			, data:{"name":name, "phoneNumber":phoneNumber}
         			, success:function(data) {
-        				if(data.result){
-        					let user = data.pension;
-        					alert("이름 : " + user.name 
-        							+ "\n날짜 : " + user.date
-        							+ "\n일수 : " + user.day
-        							+ "\n인원 : " + user.headcount
-        							+ "\n상태 : " + user.state);
-        					$("#name").val("");
-        					$("#phoneNumber").val("");
+        				if(data.name == name && data.phoneNumber == phoneNumber){
+        					alert("이름 : " + data.name 
+        							+ "\n날짜 : " + data.date
+        							+ "\n일수 : " + data.day
+        							+ "\n인원 : " + data.headcount
+        							+ "\n상태 : " + data.state);	
         				} else {
         					alert("조회 결과가 없습니다.");	
-        					$("#name").val("");
-        					$("#phoneNumber").val("");
-        					$("#name").focus();
         				}
         			}
         			, error:function() {
@@ -119,8 +113,9 @@
                         alert("비밀번호를 입력하세요.");
                         return;
                     }
-                    
+
                     alert("조회 성공");
+
                 }
             });
 
